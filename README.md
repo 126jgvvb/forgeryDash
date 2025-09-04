@@ -1,12 +1,66 @@
-# React + Vite
+# Forgery Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Forgery Dashboard is a web application built with **React (Vite)**, **Redux Toolkit**, and a **Node.js + Express backend**.  
+It provides an interface to track and manage forgery attempts, upload related images, and monitor admin/server activity.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+##  Features
 
-## Expanding the ESLint configuration
+- 📊 **Forgery Management**
+  - Add new forgery records with details (Name, MSISDN, Images).
+  - Delete forgery entries with automatic cleanup of related files.
+  - View forgery details and past attempts.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- 🖼️ **Image Handling**
+  - Upload multiple images (handled with `multer` on backend).
+  - Serve uploaded images from a local `/uploads` directory.
+  - Render stored images dynamically in the dashboard.
+
+- 🔗 **Backend Integration**
+  - REST API with endpoints for:
+    - `/admin/ping` → check if the server is active.
+    - `/admin/get-redux-object` → get the full Redux state object.
+    - `/admin/get-forgeries` → fetch only the forgeries array.
+    - `/admin/add-forgery-item` → add a new forgery with images.
+    - `/admin/update-forgery/:id` → update an existing forgery (append new images, names, or msisdn).
+    - `/admin/delete-forgery/:id` → delete a forgery and its images.
+    - `/admin/update-last-attempt` → update `lastForgeryAttempt`.
+
+-  **Frontend**
+  - Built with **React + Vite**.
+  - State management using **Redux Toolkit**.
+  - Tailwind CSS for modern, responsive UI design.
+  - React Router for navigation between dashboard and details page.
+
+---
+
+##  Project Structure
+forgeryDash/
+├── backend/ # Node.js + Express server
+│ ├── server.js # API endpoints & static serving
+│ ├── uploads/ # Uploaded images storage
+│ └── forgeries.json # Persistent data store
+│
+├── src/ # React frontend (Vite)
+│ ├── components/ # Reusable UI components
+│ ├── pages/ # Dashboard, Details, etc.
+│ ├── redux/ # Redux Toolkit slice (defaultSlice.js)
+│ ├── App.jsx # App entry point
+│ ├── main.jsx # React + Router bootstrap
+│ └── ...
+│
+├── public/ # Static assets
+├── build/ # Production build (served by backend)
+├── package.json
+└── README.md
+
+
+## 🚀 Getting Started
+
+### 1. Clone the Repository
+```bash
+git clone https://github.com/126jgvvb/forgeryDash.git
+cd forgeryDash
+
+
