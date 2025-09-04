@@ -56,11 +56,44 @@ forgeryDash/
 └── README.md
 
 
-## 🚀 Getting Started
+Technologies Used
 
-### 1. Clone the Repository
-```bash
-git clone https://github.com/126jgvvb/forgeryDash.git
-cd forgeryDash
+Frontend:
+
+React (Vite)
+
+Redux Toolkit
+
+Tailwind CSS
+
+React Router
+
+Backend:
+
+Node.js + Express
+
+Multer (file uploads)
+
+CORS
+
+File System storage (JSON + uploads)
+
+API Examples
+
+GET /admin/ping
+
+GET /admin/get-forgeries
+
+POST /admin/add-forgery-item
+Content-Type: multipart/form-data
+
+{
+  name: "John Doe",
+  msisdn: "0712345678",
+  images: [file1.jpg, file2.jpg]
+}
+
+DELETE /admin/delete-forgery/1234
+
 
 
